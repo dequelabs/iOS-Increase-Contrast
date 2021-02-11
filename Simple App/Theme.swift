@@ -24,7 +24,7 @@ enum Theme: CaseIterable {
     var textColor: UIColor? {
         switch self {
         case .defaultTheme: return nil
-        case .systemTheme: return .systemIndigo
+        case .systemTheme: return .label
         case .customTheme: return UIColor(named: "Text")
         }
     }
@@ -32,7 +32,7 @@ enum Theme: CaseIterable {
     var tintColor: UIColor? {
         switch self {
         case .defaultTheme: return .systemBlue
-        case .systemTheme: return .systemOrange
+        case .systemTheme: return .systemIndigo
         case .customTheme: return UIColor(named: "Tint")
         }
     }
@@ -40,7 +40,7 @@ enum Theme: CaseIterable {
     var switchOnTintColor: UIColor? {
         switch self {
         case .defaultTheme: return nil
-        case .systemTheme: return .systemTeal
+        case .systemTheme: return .systemOrange
         case .customTheme: return UIColor(named: "Switch Tint")
         }
     }
