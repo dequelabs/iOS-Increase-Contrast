@@ -11,13 +11,6 @@ class ContentView: UIView {
     
     private let controlStacks: [Table]
 
-    private let titleLabel: UILabel = {
-        let l = AccessibleLabel()
-        l.textAlignment = .center
-        l.text = "Here are a few different ways to add color that responds to Increase Contrast to your app. The first one uses the default iOS color palette. The second one uses iOS \"System Colors\", and the third one uses custom colors (added through Assets). Turn on Dark Mode and/or Increase Contrast to see how each set of components reacts to each setting!"
-        return l
-    }()
-    
     override init(frame: CGRect) {
         var stacks = [Table]()
         
@@ -26,7 +19,6 @@ class ContentView: UIView {
         controlStacks = stacks
         super.init(frame: frame)
         
-        self.addSubview(titleLabel)
         controlStacks.forEach { self.addSubview($0) }
         addConstraints()
     }
@@ -37,23 +29,19 @@ class ContentView: UIView {
     
     private func addConstraints() {
         self.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.topAnchor.constraint(equalTo: self.topAnchor,
-                                        constant: 10).isActive = true
-        titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor,
-                                            constant: 10).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor,
-                                             constant:  -10).isActive = true
-        
+
         for i in 0 ..< controlStacks.count {
             let stack = controlStacks[i]
-            stack.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
-            stack.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor).isActive = true
+            stack.leadingAnchor.constraint(equalTo: self.leadingAnchor,
+                                           constant: 10).isActive = true
+            stack.trailingAnchor.constraint(equalTo: self.trailingAnchor,
+                                            constant: -10).isActive = true
             
             if i != 0 {
                 stack.topAnchor.constraint(equalTo: controlStacks[i-1].bottomAnchor,
                                            constant: 10).isActive = true
             } else {
-                stack.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,
+                stack.topAnchor.constraint(equalTo: self.topAnchor,
                                            constant: 10).isActive = true
             }
             
