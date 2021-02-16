@@ -10,7 +10,7 @@ import UIKit
 class ContainerView: UIView {
     
     let obj: UIView
-    let label = UILabel()
+    let label = AccessibleLabel()
 
     init(withElement element: Element, andTheme theme: Theme) {
         obj = element.create(withTheme: theme)
